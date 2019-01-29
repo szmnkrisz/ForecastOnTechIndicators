@@ -1,0 +1,39 @@
+% Encoding: UTF-8
+
+@Article{Wang2018,
+  author    = {Yudong Wang and Li Liu and Feng Ma and Xundi Diao},
+  title     = {Momentum of return predictability},
+  journal   = {Journal of Empirical Finance},
+  year      = {2018},
+  volume    = {45},
+  pages     = {141--156},
+  month     = {jan},
+  doi       = {10.1016/j.jempfin.2017.11.003},
+  publisher = {Elsevier {BV}},
+}
+
+@Article{Neely2014,
+  author        = {Neely, Christopher J and Rapach, David E and Tu, Jun and Zhou, Guofu},
+  title         = {Forecasting the equity risk premium: the role of technical indicators},
+  journal       = {Management Science},
+  year          = {2014},
+  volume        = {60},
+  number        = {7},
+  pages         = {1772--1791},
+  __markedentry = {[szmnk:]},
+  publisher     = {INFORMS},
+}
+
+@Article{Welch2007,
+  author        = {Welch, Ivo and Goyal, Amit},
+  title         = {A comprehensive look at the empirical performance of equity premium prediction},
+  journal       = {The Review of Financial Studies},
+  year          = {2007},
+  volume        = {21},
+  number        = {4},
+  pages         = {1455--1508},
+  __markedentry = {[szmnk:6]},
+  publisher     = {Society for Financial Studies},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}

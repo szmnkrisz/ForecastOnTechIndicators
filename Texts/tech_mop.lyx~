@@ -1,0 +1,2486 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Forecasting equity risk premium: there is no momentum of predictability
+ for technical indicators
+\end_layout
+
+\begin_layout Author
+Krisztián Szemán
+\end_layout
+
+\begin_layout Date
+2019
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+Forecasting equity risk premium has been examined by numerous papers.
+ The historical average is proven to be a very stringent benchmark for forecasti
+ng is a rather difficult task.
+ As Goyal and Welch shows, some fundamental variables such as treasury bill
+ rate or dividend yields can explain future stock returns to an extent in
+ sample, but their out-of-sample forecasts are inferior to the historical
+ average.
+ Neely compares the performance of technical indicators and fundamental
+ variables based on their ability to forecast the risk premium, and finds
+ that technical indicators are more useful for prediction during recessions,
+ while fundamentals perform better during economic expansions.
+ This implies that the predictive ability of a model based of a variable
+ of either type is persistent, meaning that if it performed well in the
+ recent past, then it is more likely do so in the current period.
+ This phenomenon is called momentum of predictability (MoP) by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wang2018"
+literal "false"
+
+\end_inset
+
+Wang.
+ A MoP based strategy switches between the forecast of the model of interest
+ and the historical average based on their performance in the past 
+\begin_inset Formula $k$
+\end_inset
+
+ months.
+ Wang shows that MoP is present for fundamentals, which means that there
+ is significant stock return predictability using a MoP-based forecast.
+\end_layout
+
+\begin_layout Standard
+This paper examines a naturally arising issue: is there a similarly valuable
+ momentum of predictability for technical indicators? Using data from January
+ 1950 to December 2017, and a total of 14 variables (6 moving-average, 2
+ momentum, and 6 on-balance volume rules), , I perform a test of momentum
+ predictability in the same framework as Wang, and find that there is some
+ marginally significant dependence between past and current predictability
+ for some of the indicators, especially with a lookback window of 6 months,
+ but these findings are anything but convincing.
+ Out of the 70 computed p-values, only 7 are lower than 5%, and none is
+ lower than 1%.
+ In contrast, Wang finds p-value lower than 1% for five different variables
+ with multiple lookback periods.
+ Based on these results, we can not reject the null hypothesis that there
+ is no momentum of predictability.
+\end_layout
+
+\begin_layout Standard
+To further address to controversial findings, I also perform a principal
+ component analysis on the 14 variables.
+ As a consequence of their nature, the technical indicators are highly correlate
+d, so the first principal components, which explains over 70% of the variance,
+ is used to build another MoP-based model.
+ On an 5% level, there is significant dependence between the past 6-month
+ and the current performance, but no dependence for the other lookback periods
+ (1, 3, 9 and 12 months).
+\end_layout
+
+\begin_layout Section
+Data and descriptive statistics
+\end_layout
+
+\begin_layout Standard
+This section describes the variables used in the analysis.
+ The methodology of computing the technical indicators is the same as Neely.
+ 
+\end_layout
+
+\begin_layout Standard
+I used 14 technical indicators to predict stock return, they are the same
+ as the ones used by Neely.
+ For the equity risk premium, the log of the value-weighted equity return
+ including dividends minus the log of the lagged risk-free rate is used
+ (available on Amit Goyal's homepage).
+ 
+\end_layout
+
+\begin_layout Standard
+Out of the 14 variables, the first 6 are moving-average based rules, which
+ generate a buy or sell signal (
+\begin_inset Formula $S_{i,t}=1$
+\end_inset
+
+ or 
+\begin_inset Formula $S_{i,t}=0$
+\end_inset
+
+) at the end of period 
+\begin_inset Formula $t$
+\end_inset
+
+ by comparing two moving averages:
+\begin_inset Formula 
+\[
+S_{i,t}=\begin{cases}
+1 & \mathrm{\begin{array}{cc}
+if & MA_{\mathit{s,t}}\geq MA_{\mathit{l,t}}\end{array}}\\
+0 & \begin{array}{cc}
+\mathrm{if} & \mathrm{MA_{\mathit{s,t}}\geq MA_{\mathit{l,t}}}\end{array}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula 
+\[
+\mathrm{MA_{\mathit{j,t}}=\left(\frac{1}{j}\right)}\stackrel[i=0]{j-1}{\sum}\mathrm{\mathit{P_{t-i}}},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{t}$
+\end_inset
+
+ is the level of the stock index, 
+\begin_inset Formula $s$
+\end_inset
+
+ and 
+\begin_inset Formula $l$
+\end_inset
+
+ are the lengths of the short and long MA (
+\begin_inset Formula $s<l$
+\end_inset
+
+).
+ I analyze monthly MA rules with 
+\begin_inset Formula $s=1,2,3$
+\end_inset
+
+ and 
+\begin_inset Formula $l=9,12$
+\end_inset
+
+, and denote the indicators with MA lengths 
+\begin_inset Formula $s$
+\end_inset
+
+ and 
+\begin_inset Formula $l$
+\end_inset
+
+ by MA(
+\begin_inset Formula $s,l$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Secondly, 2 momentum based strategies are used.
+ A momentum rule strategy guves a buy signal if the current stock price
+ is higher than its level 
+\begin_inset Formula $m$
+\end_inset
+
+ periods ago:
+\begin_inset Formula 
+\[
+S_{i,t}=\begin{cases}
+1 & \mathrm{\begin{array}{cc}
+if & P_{\mathit{t}}\geq P_{\mathit{t-m}}\end{array}}\\
+0 & \begin{array}{cc}
+\mathrm{if} & P_{\mathit{t}}<P_{\mathit{t-m}}.\end{array}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I employ monthly signals for 
+\begin_inset Formula $m$
+\end_inset
+
+ = 9,12 and denote them MOM(
+\begin_inset Formula $m$
+\end_inset
+
+) for 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Thirdly, I consider 6 volume based strategies, which use trading volume
+ as well as past price changes to identify market trends.
+ I first compute the on-balance volume:
+\begin_inset Formula 
+\[
+\mathrm{OBV_{\mathit{t}}=\stackrel[k=1]{t}{\sum}VOL_{\mathit{k}}D_{\mathit{k}}},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\mathrm{VOL}{}_{k}$
+\end_inset
+
+ is the trading volume during period 
+\begin_inset Formula $k$
+\end_inset
+
+, and 
+\begin_inset Formula $D_{k}$
+\end_inset
+
+ is a binary variable which takes the value 
+\begin_inset Formula $1$
+\end_inset
+
+ if 
+\begin_inset Formula $P_{k}\geq P_{k-1}$
+\end_inset
+
+ and 
+\begin_inset Formula $-1$
+\end_inset
+
+ otherwise.
+ From 
+\begin_inset Formula $OBV_{\mathit{t}}$
+\end_inset
+
+, we form a trading signal in the following way:
+\begin_inset Formula 
+\[
+S_{i,t}=\begin{cases}
+1 & \mathrm{\begin{array}{cc}
+if & MA_{\mathit{s,t}}^{OBV}\geq MA_{\mathit{l,t}}^{OBV}\end{array}}\\
+0 & \begin{array}{cc}
+\mathrm{if} & \mathrm{MA_{\mathit{s,t}}^{OBV}\geq MA_{\mathit{l,t}}^{OBV}},\end{array}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathrm{MA_{\mathit{j,t}}^{OBV}=\left(\frac{1}{j}\right)}\stackrel[i=0]{j-1}{\sum}\mathrm{\mathit{\mathrm{OBV}_{t-i}}},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I analyze volume-based rules for 
+\begin_inset Formula $s=1,2,3$
+\end_inset
+
+ and 
+\begin_inset Formula $l=9,12$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The market data of the S&P500 stock index is used from January 1950 to December
+ 2017.
+ Due to the lack of past data, we have observations for all technical indicators
+ starting from December 2017.
+ It is important to note that due to the long-term upward trend in the index
+ level, technical indicators more often generate buy signal than not.
+ More precisely, every indicators generates a buy signal between 67 % and
+ 73% of the time.
+ We can observe that the indicators are highly correlated, with minimum
+ correlation between two indicators being 
+\begin_inset Formula $0.44$
+\end_inset
+
+, and the minimum correlation between two indicators of the same type being
+ 
+\begin_inset Formula $0.64.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Methodology of testing predictability
+\end_layout
+
+\begin_layout Standard
+This section describes the way of testing the predictive performance of
+ a forecasting model compared to the benchmark historical average model.
+ The starting point is the following univariate linear regression:
+\begin_inset Formula 
+\[
+r_{t+1}=\alpha+\beta x_{t}+\varepsilon_{t+1},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+ is the aforementioned equity risk premium, 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+ is a vector of predictive variables (in this case consisting of zeros and
+ ones), and 
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+ is an error-term assumed to be independent and identically distributed.
+ Following literature and more specifically, the framework of Wang, I employ
+ a recursive, expanding estimation window to generate out-of-sample forecasts.
+ In particular, I divide the whole sample of 
+\begin_inset Formula $T$
+\end_inset
+
+ observations of 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+ into an in-sample part containing the first 
+\begin_inset Formula $M$
+\end_inset
+
+ (in this study, 
+\begin_inset Formula $M=180$
+\end_inset
+
+) observations, and an out-of-sample part containing the remaining 
+\begin_inset Formula $N=T-M$
+\end_inset
+
+ observations.
+ The out-of sample forecast for some period 
+\begin_inset Formula $K+1$
+\end_inset
+
+, where 
+\begin_inset Formula $K\geq M$
+\end_inset
+
+, 
+\begin_inset Formula $K<T$
+\end_inset
+
+ is then given by 
+\begin_inset Formula 
+\[
+\hat{r}_{K+1}=\hat{\alpha}_{K}+\hat{\beta}_{K}x_{K},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\hat{\alpha}_{K}$
+\end_inset
+
+and 
+\begin_inset Formula $\hat{\beta}{}_{K}$
+\end_inset
+
+ are OLS-estimates of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+, respectively.
+ These estimates are obtained by regressing 
+\begin_inset Formula $\left\{ r_{t}\right\} _{t=2}^{K}$
+\end_inset
+
+ on a constant and 
+\begin_inset Formula $\left\{ x_{t}\right\} _{t=1}^{K-1}$
+\end_inset
+
+.
+ Throughout this process, a series of N out-of-sample forecasts are generated.
+ We compare these forecasts to the benchmark model following the literature
+ by using out-of-sample 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+.
+ This is the defined as the percentage reduction in mean squared predictive
+ error of the model of interest relative to the benchmark model.
+ The 
+\begin_inset Formula $R_{OOS}^{2}$
+\end_inset
+
+ results are reported in Table2.
+ We can observe that the 
+\begin_inset Formula $R_{OOS}^{2}$
+\end_inset
+
+ is positive for all of the indicators, suggesting the predictability of
+ stock returns, although I do not test the significance of the difference
+ between the models of interest and the benchmark model.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="15">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(1,9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(1,12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(2,9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(2,12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(3,9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(3,12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MOM(9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MOM(12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(1,9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(1,12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(2,9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(2,12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(3,9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(3,12)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R_{OOS}^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.24%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.66%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.23%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.73%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.18%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.01%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.14%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.16%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.13%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.49%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.34%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.40%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.09%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.57%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $R_{OOS}^{2}$
+\end_inset
+
+is positive for all variables, which implies stock return predictability
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Section
+Testing the momentum of predictability
+\end_layout
+
+\begin_layout Standard
+Wang defines momentum of predictability as the property whereby predictability
+ present during a past period is also found in the current period.
+ Therefore, we can say that momentum of predictability is present in a model,
+ if it is more likely to outperform the benchmark model in the current period,
+ if it did so in the recent past.
+ Current and past predictability is defined based on the squared error of
+ the predictions.
+ Current predictability is given by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+cp=\left(\left(r_{t}-\hat{r}_{t}\right)^{2}<\left(r_{t}-\bar{r}_{t}\right)^{2}\right),
+\]
+
+\end_inset
+
+a logical function, which thus takes the value 
+\begin_inset Formula $1,$
+\end_inset
+
+if the condition in the parenthesis is satisfied and -1 otherwise.
+ Similarly, 
+\begin_inset Formula 
+\[
+pp\left(k\right)=\left(\stackrel[j=t-k]{t-1}{\sum}\left(r_{t}-\hat{r}_{t}\right)^{2}<\stackrel[j=t-k]{t-1}{\sum}\left(r_{t}-\dot{r}_{t}\right)^{2}\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $k$
+\end_inset
+
+ is the lookback period.
+ 
+\begin_inset Formula $pp\left(k\right)$
+\end_inset
+
+ takes the value 1, when the model of interest produced a smaller sum of
+ squared error than the benchmark model throughout the past k months., and
+ 
+\begin_inset Formula $-1$
+\end_inset
+
+ otherwise.
+ I considered lookback periods of 
+\begin_inset Formula $k=1,3,6,9,12.$
+\end_inset
+
+ I test the momentum of predictability under the null hypothesis that 
+\begin_inset Formula $pp\left(k\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $cp_{t}$
+\end_inset
+
+ are serially independent.
+ For this purpose, I use the Pesaran-Timmermann statistic for directional
+ accuracy testing.
+\end_layout
+
+\begin_layout Standard
+Since I found the aforementioned test to be rather inadequately documented,
+ I shortly include the methodology.
+ The test compares whether the sign of an 
+\begin_inset Formula $n$
+\end_inset
+
+-element vector 
+\begin_inset Formula $x$
+\end_inset
+
+ does a good job of forecasting the sign of an 
+\begin_inset Formula $n$
+\end_inset
+
+-element vector 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ First, we define the vectors
+\begin_inset Formula 
+\[
+d_{x}=\begin{cases}
+1 & \mathrm{\begin{array}{cc}
+where & x>0\end{array}}\\
+0 & \begin{array}{cc}
+\mathrm{where} & \mathrm{x\leq0}\end{array},
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+d_{y}=\begin{cases}
+1 & \mathrm{\begin{array}{cc}
+where & y>0\end{array}}\\
+0 & \begin{array}{cc}
+\mathrm{where} & \mathrm{y\leq0}\end{array},
+\end{cases}l=2
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+d_{xy}=\begin{cases}
+1 & \mathrm{\begin{array}{cc}
+where & xy>0\end{array}}\\
+0 & \begin{array}{cc}
+\mathrm{where} & \mathrm{xy\leq0},\end{array}
+\end{cases}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $xy$
+\end_inset
+
+ is the elementwise product of the vectors 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ For each of these three vector, let 
+\begin_inset Formula $p_{x},p_{y}$
+\end_inset
+
+, and 
+\begin_inset Formula $p_{xy}$
+\end_inset
+
+be the proportion of 
+\begin_inset Formula $1$
+\end_inset
+
+'s in 
+\begin_inset Formula $d_{x},d_{y}$
+\end_inset
+
+ and 
+\begin_inset Formula $d_{xy}$
+\end_inset
+
+ respectively, and 
+\begin_inset Formula 
+\[
+q_{i}=\frac{p_{i}\left(1-p_{i}\right)}{n},
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $i=x,y,xy.$
+\end_inset
+
+ Now 
+\begin_inset Formula 
+\[
+p_{*}=p_{x}p_{y}+\left(1-p_{x}\right)\left(1-p_{y}\right),
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p_{xy}^{VAR}=\frac{p_{*}\left(1-p_{*}\right)}{n},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p_{*}^{VAR}=\left(2p_{y}-1\right)^{2}q_{x}+\left(2p_{x}-1\right)^{2}q_{y}+4q_{x}q_{y},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $p^{*}$
+\end_inset
+
+ can be interpreted as the expected proportion of correct guesses of sign
+ change assuming serial independence.
+ The test statistic is given by the formula 
+\begin_inset Formula 
+\[
+PT=\frac{p_{xy}-p_{*}}{\sqrt{p_{xy}^{VAR}-p_{*}^{VAR}}},
+\]
+
+\end_inset
+
+which follows a standard normal distribution under the null hypothesis.
+ The test results with the p-values are reported in Table3.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="15">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+k
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(1,9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(1,12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(2,9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(2,12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(3,9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(3,12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MOM(9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MOM(12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(1,9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(1,12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(2,9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(2,12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(3,9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(3,12)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.540
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.669
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.753
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.947
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.654
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.861
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.736
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.575
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.515
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.419
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.452
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.812
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.389
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.392
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.508
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.364
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.489
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.565
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.428
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.330
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.291
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.329
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.145
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.363
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.115
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.373
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.141
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.347
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.066
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.137
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.036
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.314
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.080
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.104
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.044
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.096
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.036
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.228
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.185
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.338
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.209
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.121
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.278
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.287
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.119
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.458
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.121
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.158
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.389
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.341
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.389
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.194
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.021
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.454
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.148
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.311
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.013
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.018
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.148
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.366
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.068
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.260
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.137
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.839
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.029
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.092
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.105
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.650
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.246
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.456
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Results of testing the MoP.
+ The p-values are much higher than in Wang's similar table, indicating there
+ is no significant MoP for technical indicators
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I find that 8 of the employed 14 variables has no significant momentum of
+ predictability for any lookback period.
+ The moving average based indicators MA(1,9), MA(1,12), MA(2,12), the momentum-b
+ased MOM(9) and the volume-based VOL(1,9) and VOL(2,9) show somewhat significant
+ momentum of predictability (on a significance level of 5%) with one of
+ the longer lookback periods (
+\begin_inset Formula $k=\mathrm{6,9}$
+\end_inset
+
+ or 
+\begin_inset Formula $12$
+\end_inset
+
+), which.
+ Moreover, none of the 70 p-values of Table3 is less than 1 percent, which
+ suggests that there is no momentum of predictability for these 14 technical
+ indicators.
+\end_layout
+
+\begin_layout Section
+MoP of different groups of technical indicators
+\end_layout
+
+\begin_layout Standard
+Since different classes (moving-average, momentum, volume-based) of technical
+ strategies tend to give more homogenous signals, I also analyse the performance
+ of the average MA-based, momentum-based, and volume based strategies.
+\end_layout
+
+\begin_layout Standard
+First, following Okunev, I compute monthly signals for 354 moving-average
+ based strategies with 
+\begin_inset Formula $s=1,2,...,12$
+\end_inset
+
+ and 
+\begin_inset Formula $l=2,3,...,36$
+\end_inset
+
+ with 
+\begin_inset Formula $s<l$
+\end_inset
+
+, meaning
+\begin_inset Formula 
+\[
+\mathrm{MA}_{t}^{AVG}=\frac{\stackrel[s=1]{12}{\sum}\stackrel[l=s+1]{36}{\sum}IPC\left(\mathrm{MA}_{\mathit{s,t}}\geq\mathrm{MA}_{\mathit{l,t}}\right)}{354},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $I$
+\end_inset
+
+ is the indicator function which takes the value 
+\begin_inset Formula $1$
+\end_inset
+
+ is the condition in the parenthesis is satisfied and 
+\begin_inset Formula $0$
+\end_inset
+
+ otherwise.
+ 
+\end_layout
+
+\begin_layout Standard
+Secondly, the average signal given by momentum based strategies is computed
+ using MOM(
+\begin_inset Formula $m$
+\end_inset
+
+) for 
+\begin_inset Formula $m=1,2,...,36$
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathrm{MOM_{\mathit{t}}^{AVG}}=\stackrel[m=1]{36}{\sum}I\left(P_{\mathit{t}}\geq P_{\mathit{t-m}}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lastly, the average of the volume-based strategies is computed for the same
+ short and long moving-averages as for simple MA-based strategies, meaning
+\begin_inset Formula 
+\[
+\mathrm{VOL}_{t}^{AVG}=\frac{\stackrel[s=1]{12}{\sum}\stackrel[l=s+1]{36}{\sum}I\left(\mathrm{MA_{\mathit{s,t}}^{OBV}}\geq\mathrm{MA_{\mathit{l,t}}^{OBV}}\right)}{354}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Furthermore, since all of them trying to extract the trend from price movements,
+ technical indicators are highly correlated.
+ Neely found that in the principal component analysis of the the14 technical
+ indicators that paper employed, the first component explains over 70% of
+ the variance.
+ Considering this, I also analyse the momentum of predictability of the
+ first principal component extracted from the PCA for the previously constructed
+ 354 + 36 +354 = 744 strategies.
+ This component, further denoted by 
+\begin_inset Formula $\mathrm{PC^{TECH}}$
+\end_inset
+
+still explains more than 55% of the variance in spite of the magnitudes
+ larger number of variables.
+ 
+\end_layout
+
+\begin_layout Standard
+After constructing these variables, I performed the same PT-test to test
+ the momentum of predictability,the results of which are reported in Table3.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+k
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathrm{PC^{TECH}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathrm{MA^{\mathrm{AVG}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathrm{MOM^{\mathrm{AVG}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathrm{VOL^{\mathrm{AVG}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.327
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.389
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.789
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.158
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.203
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.092
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.168
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.100
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.130
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.099
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.271
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.010
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.022
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.107
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.121
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.074
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.268
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.331
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.380
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.176
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+p-values for serial dependency test current and past performance of 
+\begin_inset Formula $\mathrm{PC^{TECH},}$
+\end_inset
+
+
+\begin_inset Formula $\mathrm{MA^{\mathrm{AVG}}}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathrm{MOM^{\mathrm{AVG}}}$
+\end_inset
+
+,and 
+\begin_inset Formula $\mathrm{VOL^{\mathrm{AVG}}}$
+\end_inset
+
+strategies
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the 
+\begin_inset Formula $\mathrm{PC}^{\mathrm{TECH}}$
+\end_inset
+
+and 
+\begin_inset Formula $\mathrm{VOL}^{\mathrm{AVG}}$
+\end_inset
+
+strategies, there is significant MoP on an 5% level for one lookback period,
+ namely 9 months and 6 months, respectively.
+ Considering the 
+\begin_inset Formula $\mathrm{MA}^{\mathrm{AVG}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathrm{MOM}^{\mathrm{AVG}}$
+\end_inset
+
+strategies, there is no significant MoP for any lookback period.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintAll"
+bibfiles "ref"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
