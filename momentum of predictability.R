@@ -45,25 +45,33 @@ past_errors <- df_sqerr[1 : (d1 - 1), 2 : d2]
 #-----Pesaran-Timmermann test for serial independence-----
 
 #Initializing table for the outputs
-wang_table2 <- data.frame(matrix(0, length(lookbacks), v - 2)) 
-row.names(wang_table2) <- lookbacks
-colnames(wang_table2) <- colnames(current_errors)[3 : v]
+table_mops <- data.frame(matrix(0, length(lookbacks), v - 2)) 
+row.names(table_mops) <- lookbacks
+colnames(table_mops) <- colnames(current_errors)[3 : v]
 
 #Setting column names so that a for cycle can recognize each column
 if (1 %in% lookbacks){
   colnames(past_errors)[1 : (v - 1)] <- paste0(colnames(past_errors)[1 : (v - 1)], "_1")
 }
 
+#For each technical indicator (MA_1_9, MA_1_12 ..., VOL_3_12), and for each
+#lookback period k, we now determine the strength of the relationship
+#forecasting performance in the past k month and in the current period
+#table_mops will contain the p-values
+
 for (i in 1:length(lookbacks)){
   k <- lookbacks[i]
-  for (vc in colnames(wang_table2)){
-    #performing a directional accuracy test, the methodology is written in my
-    #GitHub repository's pdf file
+  for (vc in colnames(table_mops)){
+    #performing a directional accuracy test, the methodology is written in
+    #the pdf file on github.com/szmnkrisz/ForecastOnTechIndicators
+    #fcst and actl are the two vectors to be compared, fcst contains a 1, if
+    #in the recent past, historical average outperformed the model, and a -1
+    #If it did not; actl is the same for the current period
     fcst <- 2 * (past_errors[paste0(vc, "_", k)] > past_errors[paste0("HA_", k)])[k : (d1 - 1)] - 1
     
     actl <- 2 * (current_errors[vc] > current_errors["HA"])[k : (d1 - 1)] - 1
     
-    wang_table2[i, vc] <- DACTest(fcst, actl, test = "PT", conf.level = 0.95)$p.value
+    table_mops[i, vc] <- DACTest(fcst, actl, test = "PT", conf.level = 0.95)$p.value
   }
 }
 
@@ -71,6 +79,6 @@ if (output_to_csv){
   folder <- "Tables"
   ifelse(!dir.exists(file.path(folder)), dir.create(file.path(folder)), FALSE)
   setwd(paste0(path, "/", folder))
-  write.csv(wang_table2, "table2.csv")
+  write.csv(table_mops, "table2.csv")
   setwd(path)
 }

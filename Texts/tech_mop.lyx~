@@ -45,7 +45,7 @@
 \use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
-\biblio_style natbib
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -81,8 +81,8 @@
 \begin_inset VSpace 135bp
 \end_inset
 
-Forecasting quity risk premium: is the predictive ability of technical indicator
-s persistent?
+Forecasting equity risk premium: is the predictive ability of technical
+ indicators persistent?
 \begin_inset VSpace 135bp
 \end_inset
 
@@ -107,13 +107,13 @@ Introduction
 
 \begin_layout Standard
 Forecasting stock returns is an extremely difficult task that has been examined
- by numerous papers in the 21st century.
+ by numerous papers.
  Most of these studies focus on fundamental macroeconomic variables, and
  their ability to predict the excess return over the risk-free rate (equity
  risk premium) of a stock index.
  As Goyal and Welch 
 \begin_inset CommandInset citation
-LatexCommand citebyear
+LatexCommand cite
 key "Welch2007"
 literal "false"
 
@@ -144,7 +144,7 @@ literal "false"
  the recent past, it is more likely do so in the current period.
  This phenomenon is called momentum of predictability (MoP) by Wang
 \begin_inset CommandInset citation
-LatexCommand keyonly
+LatexCommand cite
 key "Wang2018"
 literal "false"
 
@@ -172,7 +172,7 @@ This paper examines a naturally arising issue: is there an analogous, similarly
  average-based, 2 momentum-based, and 6 volume-based rules), I perform a
  test of momentum predictability in the same framework as Wang
 \begin_inset CommandInset citation
-LatexCommand keyonly
+LatexCommand cite
 key "Wang2018"
 literal "false"
 
@@ -212,7 +212,7 @@ This section describes the variables that are used to carry out the analysis.
 \begin_layout Standard
 The 14 technical indicators that are used are the same that Neely
 \begin_inset CommandInset citation
-LatexCommand keyonly
+LatexCommand cite
 key "Neely2014"
 literal "false"
 
@@ -448,7 +448,7 @@ This section describes the way of testing the out-of-sample predictive performan
 ce of a forecasting model compared to the benchmark historical average model.
  The methodology is also detailed by Wang
 \begin_inset CommandInset citation
-LatexCommand keyonly
+LatexCommand cite
 key "Wang2018"
 literal "false"
 
@@ -580,10 +580,13 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="2">
+<lyxtabular version="3" rows="2" columns="6">
 <features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -596,7 +599,54 @@ Strategy
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(1,9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(1,12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(2,9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(2,12)
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA(3,9)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -608,18 +658,7 @@ Strategy
 
 \end_inset
 </cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-MA(1,9)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -628,18 +667,7 @@ MA(1,9)
 
 \end_inset
 </cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-MA(1,12)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -648,18 +676,7 @@ MA(1,12)
 
 \end_inset
 </cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-MA(2,9)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -668,18 +685,7 @@ MA(2,9)
 
 \end_inset
 </cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-MA(2,12)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -688,18 +694,7 @@ MA(2,12)
 
 \end_inset
 </cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-MA(3,9)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -709,7 +704,33 @@ MA(3,9)
 \end_inset
 </cell>
 </row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Strategy
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -719,51 +740,7 @@ MA(3,12)
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.01
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
- 
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Strategy
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $R_{OOS}^{2}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -772,17 +749,6 @@ MOM(9)
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.14
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -792,11 +758,79 @@ MOM(12)
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(1,9)
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+VOL(1,12)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R_{OOS}^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.01
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 0.16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.49
 \end_layout
 
 \end_inset
@@ -806,10 +840,16 @@ MOM(12)
 
 \end_inset
 
- 
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="2">
+<lyxtabular version="3" rows="2" columns="5">
 <features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -822,7 +862,45 @@ Strategy
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(2,9)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(2,12)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(3,9)
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VOL(3,12)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -834,113 +912,29 @@ Strategy
 
 \end_inset
 </cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-VOL(1,9)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.13%
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-VOL(1,12)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.49%
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-VOL(2,9)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.34%
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-VOL(2,12)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.40%
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-VOL(3,9)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.09%
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-VOL(3,12)
+0.34
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.09
 \end_layout
 
 \end_inset
@@ -949,7 +943,7 @@ VOL(3,12)
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.57%
+0.57
 \end_layout
 
 \end_inset
@@ -969,7 +963,8 @@ VOL(3,12)
 \begin_inset Formula $R_{OOS}^{2}$
 \end_inset
 
-is positive for all variables, which implies stock return predictability
+is positive for all variables, which implies stock return predictability.
+ The values in the table are expressed in percentages.
 \end_layout
 
 \end_inset
@@ -989,7 +984,7 @@ Testing the momentum of predictability
 \begin_layout Standard
 Wang
 \begin_inset CommandInset citation
-LatexCommand keyonly
+LatexCommand cite
 key "Wang2018"
 literal "false"
 
@@ -2270,7 +2265,7 @@ ased MOM(9) and the volume-based VOL(1,9) and VOL(2,9) show somewhat significant
 To more formally conclude that there is no signficant momentum of predictability
  present, I used False Discovery Rate controlling (by Benjamini Hochberg
 \begin_inset CommandInset citation
-LatexCommand keyonly
+LatexCommand cite
 key "Benjamini1995"
 literal "false"
 
@@ -2322,7 +2317,7 @@ In the previous section, I tested 14 technical indicators, and concluded
  g.
  Okunev
 \begin_inset CommandInset citation
-LatexCommand keyonly
+LatexCommand cite
 key "Okunev2003"
 literal "false"
 
@@ -2340,7 +2335,7 @@ Since different classes (moving-average, momentum, volume-based) of technical
 \begin_layout Standard
 First, following Okunev
 \begin_inset CommandInset citation
-LatexCommand keyonly
+LatexCommand cite
 key "Okunev2003"
 literal "false"
 
@@ -2830,7 +2825,7 @@ All things considered, it can be concluded that technical indicators do
  do.
  This can be a bit counter-intuitive at first, as Neely
 \begin_inset CommandInset citation
-LatexCommand keyonly
+LatexCommand cite
 key "Neely2014"
 literal "false"
 
@@ -2847,7 +2842,7 @@ literal "false"
 \begin_layout Standard
 On the other hand, only some of the fundamental variables analysed by Wang
 \begin_inset CommandInset citation
-LatexCommand keyonly
+LatexCommand cite
 key "Wang2018"
 literal "false"
 
@@ -2874,7 +2869,7 @@ In this paper, I examined the persistence of forecasting ability, also known
  equity risk premium.
  Namely, I tested the MoP for 14 technical indicators used by Neely
 \begin_inset CommandInset citation
-LatexCommand keyonly
+LatexCommand cite
 key "Neely2014"
 literal "false"
 
@@ -2885,7 +2880,7 @@ based and 354 volume-based indicators, respectively, and a principal component
  which catches the average of the signals given by the mentioned indicators.
  In contrast to Wang
 \begin_inset CommandInset citation
-LatexCommand keyonly
+LatexCommand cite
 key "Wang2018"
 literal "false"
 
