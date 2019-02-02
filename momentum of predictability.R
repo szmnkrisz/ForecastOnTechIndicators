@@ -1,3 +1,7 @@
+rm(list = ls())
+replication <- FALSE
+average_strategies <- FALSE
+output_to_csv <- FALSE
 #Definition of the MoP and how to analyze it can be found in Wang's article,
 #Or in the pdf file in my GitHub repository , where the methodology of the 
 #Directional Accuracy Test by Pesaran and Timmermann is detailed as well.
@@ -10,12 +14,10 @@
 #By Wang(2018), or analyse whether there is significant MoP for technical
 #Variables as well. The exact methodology is given in Yudong Wang's article
 #Momentum of return predictability
-rm(list = ls())
 
 #Replication will use Wang's data to analyze momentum of predictability
 #for FUNDAMENTAL VARIABLES. The results in Table 2 of the article
 #are exactly replicated by this script, if replication == TRUE
-replication <- FALSE
 
 #If replication is set to FALSE, we will use data with technical
 #Variables. If average_strategies is FALSE, then the 14 technical
@@ -24,9 +26,6 @@ replication <- FALSE
 #of 36 momentum rules, 1 for the avg of 354 volume based rules) are
 #used, plus a principal components extracted from the PCA for these
 #744 variables
-
-average_strategies <- FALSE
-output_to_csv <- FALSE
 
 source("mop_forecast_errors.R")
 
